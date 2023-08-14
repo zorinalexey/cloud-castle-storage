@@ -1,0 +1,21 @@
+{
+    "name": "cloud-castle/storage",
+    "description": "Библиотека для работы с файловыми хранилищами",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CloudCastle\\Storage\\": "src/Storage/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Алексей Зорин",
+            "email": "zorinalexey59292@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.2"
+    }
+}
