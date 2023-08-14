@@ -27,7 +27,7 @@ final class Storage
 
         $diskMd5 = self::getMd5Name($disk->value, $config);
 
-        if (isset(self::$storage[$diskMd5]) && self::$storage[$diskMd5]) {
+        if (isset(self::$storage[$diskMd5]) && self::$storage[$diskMd5] instanceof StorageInterface) {
             return self::$storage[$diskMd5];
         }
 

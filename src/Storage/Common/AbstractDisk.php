@@ -5,12 +5,15 @@ namespace CloudCastle\Storage\Common;
 use CloudCastle\Storage\Storage;
 use CloudCastle\Storage\StorageInterface;
 
+/**
+ * @method static getInstance
+ */
 abstract class AbstractDisk
 {
     /**
-     * @var array|null
+     * @var array
      */
-    private static array|null $instance = null;
+    private static array $instance = [];
 
     /**
      * @param array|null $config
@@ -24,11 +27,11 @@ abstract class AbstractDisk
 
         $instanceMd5 = Storage::getMd5Name(static::class, $config);
 
-        if (isset(self::$instance[$instanceMd5]) && self::$instance[$instanceMd5]) {
+        if (isset(self::$instance[$instanceMd5]) && self::$instance[$instanceMd5] instanceof StorageInterface) {
             return self::$instance[$instanceMd5];
         }
 
-        self::$instance[$instanceMd5] = new static(...$config);
+        self::$instance[$instanceMd5] = static::getInstance(...$config);
 
         return self::$instance[$instanceMd5];
     }
