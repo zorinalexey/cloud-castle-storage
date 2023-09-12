@@ -10,25 +10,10 @@ use CloudCastle\Storage\StorageInterface;
 
 final class Ftp extends AbstractDisk implements StorageInterface
 {
-    /**
-     * @var array
-     */
     private static array $instance = [];
 
-    /**
-     * @var Connect|null
-     */
     private Connect|null $connect = null;
 
-    /**
-     * @param string $hostname
-     * @param string|null $username
-     * @param string|null $password
-     * @param int $port
-     * @param int $timeout
-     * @return self
-     * @throws FtpException
-     */
     public static function getInstance(
         string $hostname,
         string|null $username = null,
@@ -48,41 +33,34 @@ final class Ftp extends AbstractDisk implements StorageInterface
 
         return self::$instance[$initName];
     }
-    
-    /**
-     * @param string $file
-     * @return string
-     */
+
     public function path(string $file): string
     {
-
         return '';
     }
 
-    /**
-     * @param string $dir
-     * @return bool
-     */
-    public function checkDir(string $dir): bool
+    public function dirExist(string $dir): bool
     {
         return false;
     }
 
-    /**
-     * @param string $dir
-     * @return bool
-     */
     public function mkDir(string $dir): bool
     {
         return false;
     }
 
-    /**
-     * @param string $file
-     * @param string $content
-     * @return bool
-     */
+
     public function put(string $file, string $content): bool
+    {
+        return false;
+    }
+
+    public function fileExist(string $path): bool
+    {
+        return false;
+    }
+
+    public function get(string $path): array|string|false
     {
         return false;
     }

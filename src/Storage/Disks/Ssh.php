@@ -7,40 +7,34 @@ use CloudCastle\Storage\StorageInterface;
 
 final class Ssh extends AbstractDisk implements StorageInterface
 {
-    /**
-     * @param string $file
-     * @return string
-     */
+
     public function path(string $file): string
     {
-        // TODO: Implement path() method.
+        return '';
     }
 
-    /**
-     * @param string $dir
-     * @return bool
-     */
-    public function checkDir(string $dir): bool
+    public function dirExist(string $dir): bool
     {
-        // TODO: Implement checkDir() method.
+        return false;
     }
 
-    /**
-     * @param string $dir
-     * @return bool
-     */
     public function mkDir(string $dir): bool
     {
-        // TODO: Implement mkDir() method.
+        return false;
     }
 
-    /**
-     * @param string $file
-     * @param string $content
-     * @return bool
-     */
     public function put(string $file, string $content): bool
     {
-        // TODO: Implement put() method.
+        return false;
+    }
+
+    public function fileExist(string $path): bool
+    {
+        return false;
+    }
+
+    public function get(string $path): array|string|false
+    {
+        return false;
     }
 }

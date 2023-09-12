@@ -10,18 +10,11 @@ use CloudCastle\Storage\StorageInterface;
  */
 abstract class AbstractDisk
 {
-    /**
-     * @var array
-     */
     private static array $instance = [];
 
-    /**
-     * @param array|null $config
-     * @return StorageInterface
-     */
     public static function init(array|null $config = null): StorageInterface
     {
-        if($config === null){
+        if ($config === null) {
             $config = [];
         }
 
@@ -35,4 +28,5 @@ abstract class AbstractDisk
 
         return self::$instance[$instanceMd5];
     }
+
 }

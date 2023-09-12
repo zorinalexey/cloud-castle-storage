@@ -9,16 +9,8 @@ use CloudCastle\Storage\Disks\Local;
  */
 final class Storage
 {
-    /**
-     * @var array|null
-     */
     private static array|null $storage = null;
 
-    /**
-     * @param DisksEnum|null $disk
-     * @param array|null $config
-     * @return StorageInterface
-     */
     public static function disk(DisksEnum|null $disk = null, array|null $config = null): StorageInterface
     {
         if ($disk === null) {
@@ -38,7 +30,7 @@ final class Storage
 
     public static function getMd5Name(string $diskName, array|null $config): string
     {
-        if($diskName === Local::class){
+        if ($diskName === Local::class) {
             $config = null;
         }
 

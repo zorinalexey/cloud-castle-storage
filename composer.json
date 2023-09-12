@@ -17,6 +17,17 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.1",
-        "ext-ftp": "*"
+        "ext-ftp": "*",
+        "free2one/php-accessor": "~0.4",
+        "league/flysystem": "^3.15",
+        "league/flysystem-ftp": "^3.15",
+        "league/flysystem-memory": "^3.15",
+        "league/flysystem-webdav": "^3.15",
+        "league/flysystem-bundle": "^3.2",
+        "league/flysystem-aws-s3-v3": "^3.15",
+        "league/flysystem-read-only": "^3.15",
+        "league/flysystem-ziparchive": "^3.15",
+        "league/flysystem-async-aws-s3": "^3.15",
+        "league/flysystem-sftp-v3": "^3.15"
     }
 }

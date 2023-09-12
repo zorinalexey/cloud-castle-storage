@@ -5,38 +5,35 @@ namespace CloudCastle\Storage\Disks;
 use CloudCastle\Storage\Common\AbstractDisk;
 use CloudCastle\Storage\StorageInterface;
 
-class MailRuDisk extends AbstractDisk implements StorageInterface
+final class MailRuDisk extends AbstractDisk implements StorageInterface
 {
-
-    /**
-     * @inheritDoc
-     */
     public function path(string $file): string
     {
-        // TODO: Implement path() method.
+        return '';
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function checkDir(string $dir): bool
+    public function dirExist(string $dir): bool
     {
-        // TODO: Implement checkDir() method.
+        return false;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function mkDir(string $dir): bool
     {
-        // TODO: Implement mkDir() method.
+        return false;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function put(string $file, string $content): bool
     {
-        // TODO: Implement put() method.
+        return false;
+    }
+
+    public function fileExist(string $path): bool
+    {
+        return false;
+    }
+
+    public function get(string $path): array|string|false
+    {
+        return false;
     }
 }

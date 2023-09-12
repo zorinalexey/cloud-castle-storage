@@ -10,20 +10,11 @@ use CloudCastle\Storage\StorageInterface;
  */
 final class Local extends AbstractDisk implements StorageInterface
 {
-    /**
-     * @param string $file
-     * @return string
-     */
     public function path(string $file): string
     {
         return realpath($file);
     }
 
-    /**
-     * @param string $file
-     * @param string $content
-     * @return bool
-     */
     public function put(string $file, string $content): bool
     {
         if ($this->mkDir(dirname($file))) {
@@ -33,25 +24,36 @@ final class Local extends AbstractDisk implements StorageInterface
         return false;
     }
 
-    /**
-     * @param string $dir
-     * @return bool
-     */
     public function mkDir(string $dir): bool
     {
-        if ($this->checkDir($dir) || mkdir($dir, 0777, true)) {
-            return true;
+        return $this->dirExist($dir) || mkdir($dir, 0777, true) || is_dir($dir);
+    }
+
+    public function dirExist(string $dir): bool
+    {
+        return is_dir($dir);
+    }
+
+    public function fileExist(string $path): bool
+    {
+        return file_exists($path);
+    }
+
+    public function get(string $path): array|string|false
+    {
+        if (is_file($path)) {
+            return file_get_contents($path);
+        }
+
+        if (is_dir($path)) {
+            return $this->getDirContent($path);
         }
 
         return false;
     }
 
-    /**
-     * @param string $dir
-     * @return bool
-     */
-    public function checkDir(string $dir): bool
+    private function getDirContent(string $path): array
     {
-        return is_dir($dir);
+        return [];
     }
 }
