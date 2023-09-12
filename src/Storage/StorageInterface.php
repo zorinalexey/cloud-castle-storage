@@ -17,4 +17,6 @@ interface StorageInterface
     public function fileExist(string $path): bool;
 
     public function get(string $path): array|string|false;
+
+    public function rm(string $path):bool;
 }

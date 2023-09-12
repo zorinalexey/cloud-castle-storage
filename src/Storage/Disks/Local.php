@@ -56,4 +56,19 @@ final class Local extends AbstractDisk implements StorageInterface
     {
         return [];
     }
+
+    public function rm(string $path): bool
+    {
+        $realPath = $this->path($path);
+
+        if($this->fileExist($realPath)){
+            return unlink($realPath);
+        }
+
+        if($this->dirExist($realPath)){
+            return rmdir($realPath);
+        }
+
+        return false;
+    }
 }

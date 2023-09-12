@@ -37,4 +37,9 @@ final class YandexDisk extends AbstractDisk implements StorageInterface
     {
         return false;
     }
+
+    public function rm(string $path): bool
+    {
+        return false;
+    }
 }
