@@ -48,6 +48,8 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function get(string $path): array|string|false
     {
+        $path = $this->path($path);
+
         if (is_file($path)) {
             return file_get_contents($path);
         }
@@ -61,7 +63,16 @@ final class Local extends AbstractDisk implements StorageInterface
 
     private function getDirContent(string $path): array
     {
-        return [];
+        $data = [];
+        $files = scandir($this->path($path));
+
+        foreach ($files as $file){
+            if(!in_array($file, ['.', '..'])){
+                $data[] = $this->path($path . DIRECTORY_SEPARATOR. $file);
+            }
+        }
+
+        return $data;
     }
 
     public function rm(string $path): bool
