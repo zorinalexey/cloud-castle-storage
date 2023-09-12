@@ -10,6 +10,11 @@ use CloudCastle\Storage\StorageInterface;
  */
 final class Local extends AbstractDisk implements StorageInterface
 {
+    public static function getInstance(): self
+    {
+        return new self();
+    }
+
     public function path(string $file): string
     {
         return realpath($file);

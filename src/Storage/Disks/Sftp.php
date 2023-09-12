@@ -5,7 +5,7 @@ namespace CloudCastle\Storage\Disks;
 use CloudCastle\Storage\Common\AbstractDisk;
 use CloudCastle\Storage\StorageInterface;
 
-final class YandexDisk extends AbstractDisk implements StorageInterface
+final class Sftp extends AbstractDisk implements StorageInterface
 {
     public static function getInstance(): self
     {

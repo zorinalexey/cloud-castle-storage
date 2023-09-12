@@ -7,6 +7,10 @@ use CloudCastle\Storage\StorageInterface;
 
 final class Ssh extends AbstractDisk implements StorageInterface
 {
+    public static function getInstance(): self
+    {
+        return new self();
+    }
 
     public function path(string $file): string
     {
