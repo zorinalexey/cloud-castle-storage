@@ -17,8 +17,10 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function put(string $file, string $content): bool
     {
-        if ($this->mkDir(dirname($file))) {
-            return file_put_contents($file, $content);
+        $realPath = $this->path($file);
+
+        if ($this->mkDir(dirname($realPath))) {
+            return file_put_contents($realPath, $content);
         }
 
         return false;
@@ -31,12 +33,12 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function dirExist(string $dir): bool
     {
-        return is_dir($dir);
+        return is_dir($this->path($dir));
     }
 
     public function fileExist(string $path): bool
     {
-        return file_exists($path);
+        return file_exists($this->path($path));
     }
 
     public function get(string $path): array|string|false
