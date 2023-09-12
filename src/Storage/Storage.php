@@ -11,10 +11,10 @@ final class Storage
 {
     private static array|null $storage = null;
 
-    public static function disk(DisksEnum|null $disk = null, array|null $config = null): StorageInterface
+    public static function disk(EDisks|null $disk = null, array|null $config = null): StorageInterface
     {
         if ($disk === null) {
-            $disk = DisksEnum::LOCAL;
+            $disk = EDisks::LOCAL;
         }
 
         $diskMd5 = self::getMd5Name($disk->value, $config);

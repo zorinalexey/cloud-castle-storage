@@ -15,7 +15,7 @@ use CloudCastle\Storage\Disks\YandexDisk;
  * @property $value
  * @property $name
  */
-enum DisksEnum: string
+enum EDisks: string
 {
     case FTP = Ftp::class;
     case SFTP = Sftp::class;
