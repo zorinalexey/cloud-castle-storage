@@ -12,7 +12,7 @@ final class Local extends AbstractDisk implements StorageInterface
 {
     public static function getInstance(): self
     {
-        return new self();
+        return self::$instance[self::class] ?? (self::$instance[self::class] = new self());
     }
 
     public function path(string $file): string
@@ -33,15 +33,15 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function mkDir(string $dir): bool
     {
-        return $this->dirExist($dir) || mkdir($dir, 0777, true) || is_dir($dir);
+        return $this->isDir($dir) || mkdir($dir, 0777, true) || is_dir($dir);
     }
 
-    public function dirExist(string $dir): bool
+    public function isDir(string $dir): bool
     {
         return is_dir($this->path($dir));
     }
 
-    public function fileExist(string $path): bool
+    public function isFile(string $path): bool
     {
         return file_exists($this->path($path));
     }
@@ -79,11 +79,11 @@ final class Local extends AbstractDisk implements StorageInterface
     {
         $realPath = $this->path($path);
 
-        if($this->fileExist($realPath)){
+        if ($this->isFile($realPath)) {
             return unlink($realPath);
         }
 
-        if($this->dirExist($realPath)){
+        if ($this->isDir($realPath)) {
             return rmdir($realPath);
         }
 

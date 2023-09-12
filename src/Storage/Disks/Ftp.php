@@ -4,7 +4,6 @@ namespace CloudCastle\Storage\Disks;
 
 use CloudCastle\Storage\Common\AbstractDisk;
 use CloudCastle\Storage\Connections\Ftp\Connect;
-use CloudCastle\Storage\Exceptions\FtpException;
 use CloudCastle\Storage\Storage;
 use CloudCastle\Storage\StorageInterface;
 
@@ -39,7 +38,7 @@ final class Ftp extends AbstractDisk implements StorageInterface
         return '';
     }
 
-    public function dirExist(string $dir): bool
+    public function isDir(string $dir): bool
     {
         return false;
     }
@@ -55,7 +54,7 @@ final class Ftp extends AbstractDisk implements StorageInterface
         return false;
     }
 
-    public function fileExist(string $path): bool
+    public function isFile(string $path): bool
     {
         return false;
     }

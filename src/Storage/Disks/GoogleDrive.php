@@ -17,7 +17,7 @@ final class GoogleDrive extends AbstractDisk implements StorageInterface
         return false;
     }
 
-    public function dirExist(string $dir): bool
+    public function isDir(string $dir): bool
     {
         return false;
     }
@@ -32,7 +32,7 @@ final class GoogleDrive extends AbstractDisk implements StorageInterface
         return false;
     }
 
-    public function fileExist(string $path): bool
+    public function isFile(string $path): bool
     {
         return false;
     }
