@@ -17,7 +17,11 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function path(string $file): string
     {
-        return realpath($file);
+        if (file_exists($file)) {
+            return realpath($file);
+        }
+
+        return dirname($file) . DIRECTORY_SEPARATOR . basename($file);
     }
 
     public function put(string $file, string $content): bool
@@ -33,6 +37,8 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function mkDir(string $dir): bool
     {
+        $dir = $this->path($dir);
+
         return $this->isDir($dir) || mkdir($dir, 0777, true) || is_dir($dir);
     }
 
