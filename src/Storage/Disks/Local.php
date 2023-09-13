@@ -56,11 +56,11 @@ final class Local extends AbstractDisk implements StorageInterface
     {
         $path = $this->path($path);
 
-        if (is_file($path)) {
+        if ($this->isFile($path)) {
             return file_get_contents($path);
         }
 
-        if (is_dir($path)) {
+        if ($this->isDir($path)) {
             return $this->getDirContent($path);
         }
 
