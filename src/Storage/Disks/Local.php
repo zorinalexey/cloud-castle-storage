@@ -61,13 +61,13 @@ final class Local extends AbstractDisk implements StorageInterface
         }
 
         if ($this->isDir($path)) {
-            return $this->getDirContent($path);
+            return $this->scanDir($path);
         }
 
         return false;
     }
 
-    private function getDirContent(string $path): array
+    public function scanDir(string $path): array
     {
         $data = [];
         $files = scandir($this->path($path));
