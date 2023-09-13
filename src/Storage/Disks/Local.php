@@ -49,7 +49,7 @@ final class Local extends AbstractDisk implements StorageInterface
 
     public function isFile(string $path): bool
     {
-        return file_exists($this->path($path));
+        return is_file($this->path($path));
     }
 
     public function get(string $path): array|string|false
