@@ -39,7 +39,15 @@ final class Local extends AbstractDisk implements StorageInterface
     {
         $dir = $this->path($dir);
 
-        return $this->isDir($dir) || mkdir($dir, 0777, true) || is_dir($dir);
+        if($this->isDir($dir)){
+            return true;
+        }
+
+        if(mkdir($dir, 0777, true) && $this->isDir($dir)){
+            return true;
+        }
+
+        return false;
     }
 
     public function isDir(string $dir): bool
